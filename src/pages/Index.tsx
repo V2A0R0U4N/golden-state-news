@@ -1,4 +1,5 @@
-import Header from '@/components/Header';
+import EnhancedHeader from '@/components/EnhancedHeader';
+import YouMayHaveMissed from '@/components/YouMayHaveMissed';
 import HeroSection from '@/components/HeroSection';
 import FeaturedNews from '@/components/FeaturedNews';
 import CategorySection, { politicsStories, businessStories, sportsStories } from '@/components/CategorySection';
@@ -10,8 +11,8 @@ import { TrendingUp, Calendar, Users } from 'lucide-react';
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      {/* Header with Navigation */}
-      <Header />
+      {/* Enhanced Header with Navigation */}
+      <EnhancedHeader />
 
       {/* Hero Section with Breaking News Carousel */}
       <HeroSection />
@@ -73,6 +74,9 @@ const Index = () => {
         stories={sportsStories}
         viewAllLink="/sports"
       />
+
+      {/* You May Have Missed Section */}
+      <YouMayHaveMissed />
 
       {/* Call to Action Section */}
       <section className="py-16 bg-primary text-primary-foreground">

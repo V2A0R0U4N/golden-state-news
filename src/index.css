@@ -2,59 +2,65 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Gujarat Focus News Design System - Red, Golden & White Theme
-All colors MUST be HSL for consistent theming.
+/* Gujarat Focus News Design System - Enhanced Premium Theme
+All colors MUST be HSL for consistent theming across light/dark modes.
 */
 
 @layer base {
   :root {
+    /* Light Mode - Premium Colors */
     --background: 0 0% 100%;
-    --foreground: 210 100% 15%;
+    --foreground: 210 40% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 210 100% 15%;
+    --card-foreground: 210 40% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 210 100% 15%;
+    --popover-foreground: 210 40% 15%;
 
-    /* Crimson Red - Primary brand color */
-    --primary: 0 84% 44%;
+    /* Primary Brand Colors */
+    --primary: 0 84% 44%;              /* Crimson Red */
     --primary-foreground: 0 0% 100%;
     --primary-hover: 0 84% 40%;
 
-    /* Golden Amber - Secondary brand color */
-    --secondary: 45 100% 51%;
+    /* Secondary Brand Colors */
+    --secondary: 45 100% 51%;          /* Golden Amber */
     --secondary-foreground: 0 0% 0%;
     --secondary-hover: 45 100% 47%;
 
-    /* Supporting colors */
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Enhanced Supporting Colors */
+    --muted: 31 100% 97%;              /* Warm Cream */
+    --muted-foreground: 215 16% 47%;   /* Gray Secondary */
 
-    --accent: 45 100% 87%;
-    --accent-foreground: 210 100% 15%;
+    --accent: 45 100% 87%;             /* Soft Gold */
+    --accent-foreground: 210 40% 15%;
 
-    --destructive: 0 84.2% 60.2%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
+    --border: 220 13% 91%;             /* Light Border */
+    --input: 220 13% 91%;
     --ring: 0 84% 44%;
 
-    /* News specific colors */
+    /* News Category Colors */
     --breaking-news: 0 84% 44%;
     --breaking-news-foreground: 0 0% 100%;
-    --category-politics: 240 100% 35%;
-    --category-business: 120 60% 30%;
-    --category-sports: 280 80% 45%;
-    --category-culture: 35 85% 45%;
+    --category-politics: 240 100% 35%;   /* Deep Blue */
+    --category-business: 45 100% 51%;    /* Golden */
+    --category-sports: 142 76% 36%;      /* Green */
+    --category-culture: 35 85% 45%;      /* Orange */
+    --category-tech: 200 98% 39%;        /* Cyan */
+    --category-entertainment: 280 100% 70%; /* Purple */
     
-    /* Design tokens */
+    /* Premium Design Tokens */
     --gradient-hero: linear-gradient(135deg, hsl(0 84% 44% / 0.9), hsl(45 100% 51% / 0.7));
     --gradient-card: linear-gradient(180deg, transparent 0%, hsl(0 0% 0% / 0.7) 100%);
+    --gradient-premium: linear-gradient(135deg, hsl(45 100% 51%), hsl(0 84% 44%));
     --shadow-elegant: 0 10px 30px -10px hsl(0 84% 44% / 0.2);
     --shadow-card: 0 4px 20px -2px hsl(0 0% 0% / 0.1);
+    --shadow-hover: 0 8px 32px -8px hsl(0 84% 44% / 0.3);
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
     --radius: 0.75rem;
 
@@ -76,35 +82,46 @@ All colors MUST be HSL for consistent theming.
   }
 
   .dark {
-    --background: 210 100% 4%;
-    --foreground: 0 0% 95%;
+    /* Dark Mode - NO Pure Black, Warm Navy-Charcoal Theme */
+    --background: 220 16% 11%;           /* Dark Primary (Navy-Charcoal) */
+    --foreground: 210 20% 95%;           /* Cream Text */
 
-    --card: 210 100% 6%;
-    --card-foreground: 0 0% 95%;
+    --card: 220 16% 15%;                 /* Dark Secondary (Card backgrounds) */
+    --card-foreground: 210 20% 95%;
 
-    --popover: 210 100% 6%;
-    --popover-foreground: 0 0% 95%;
+    --popover: 220 16% 15%;
+    --popover-foreground: 210 20% 95%;
 
-    --primary: 0 84% 44%;
+    /* Enhanced Brand Colors for Dark Mode */
+    --primary: 0 74% 52%;                /* Slightly Lighter Red */
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 0 84% 40%;
+    --primary-hover: 0 74% 48%;
 
-    --secondary: 45 100% 51%;
-    --secondary-foreground: 0 0% 0%;
-    --secondary-hover: 45 100% 47%;
+    --secondary: 45 98% 60%;             /* Golden Glow (Brighter) */
+    --secondary-foreground: 220 16% 11%;
+    --secondary-hover: 45 98% 56%;
 
-    --muted: 210 40% 8%;
-    --muted-foreground: 215 20.2% 65.1%;
+    /* Dark Mode Supporting Colors */
+    --muted: 220 16% 18%;                /* Slightly lighter than card */
+    --muted-foreground: 215 15% 65%;     /* Muted text */
 
-    --accent: 45 100% 15%;
-    --accent-foreground: 45 100% 85%;
+    --accent: 45 84% 25%;                /* Dark Gold accent */
+    --accent-foreground: 45 98% 85%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 75% 55%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 210 40% 12%;
-    --input: 210 40% 12%;
-    --ring: 0 84% 44%;
+    --border: 220 13% 25%;               /* Warm Gray borders */
+    --input: 220 13% 25%;
+    --ring: 0 74% 52%;
+
+    /* Dark Mode Category Colors (Enhanced visibility) */
+    --category-politics: 240 100% 60%;   /* Lighter blue */
+    --category-business: 45 98% 60%;     /* Bright gold */
+    --category-sports: 142 60% 50%;      /* Lighter green */
+    --category-culture: 35 85% 60%;      /* Lighter orange */
+    --category-tech: 200 90% 55%;        /* Lighter cyan */
+    --category-entertainment: 280 100% 80%; /* Lighter purple */
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -122,29 +139,66 @@ All colors MUST be HSL for consistent theming.
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
-    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    @apply bg-background text-foreground transition-colors duration-300;
+    font-family: 'Inter', 'Segoe UI', -apple-system, sans-serif;
+    line-height: 1.6;
   }
 
+  /* Premium Typography System */
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Georgia', 'Times New Roman', serif;
-    @apply font-bold leading-tight;
+    font-family: 'Playfair Display', 'Georgia', serif;
+    @apply font-bold leading-tight text-foreground;
+    letter-spacing: -0.02em;
+  }
+
+  h1 { @apply text-4xl md:text-6xl; }
+  h2 { @apply text-3xl md:text-4xl; }
+  h3 { @apply text-2xl md:text-3xl; }
+  h4 { @apply text-xl md:text-2xl; }
+  h5 { @apply text-lg md:text-xl; }
+  h6 { @apply text-base md:text-lg; }
+
+  /* UI Elements Typography */
+  .ui-text {
+    font-family: 'Poppins', 'Inter', sans-serif;
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Focus styles */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-primary ring-offset-2 ring-offset-background;
   }
 }
 
 @layer components {
+  /* Premium News Card Components */
   .news-card {
-    @apply relative overflow-hidden rounded-lg bg-card shadow-[var(--shadow-card)] transition-[var(--transition-smooth)] hover:shadow-[var(--shadow-elegant)] hover:scale-[1.02];
+    @apply relative overflow-hidden rounded-xl bg-card shadow-[var(--shadow-card)] 
+           transition-[var(--transition-smooth)] hover:shadow-[var(--shadow-hover)] 
+           hover:scale-[1.02] hover:-translate-y-1 group cursor-pointer;
   }
 
+  .news-card-premium {
+    @apply news-card border border-border/50 hover:border-primary/20;
+  }
+
+  /* Enhanced Category Badges */
   .category-badge {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider;
+    @apply inline-flex items-center px-3 py-1.5 rounded-full text-xs font-semibold 
+           uppercase tracking-wider ui-text transition-[var(--transition-smooth)]
+           hover:scale-105 backdrop-blur-sm;
   }
 
   .breaking-badge {
-    @apply bg-[hsl(var(--breaking-news))] text-[hsl(var(--breaking-news-foreground))] animate-pulse;
+    @apply bg-[hsl(var(--breaking-news))] text-[hsl(var(--breaking-news-foreground))] 
+           animate-pulse shadow-lg shadow-red-500/25;
   }
 
+  /* Premium Overlay Effects */
   .hero-overlay {
     background: var(--gradient-hero);
     @apply absolute inset-0 z-10;
@@ -155,21 +209,100 @@ All colors MUST be HSL for consistent theming.
     @apply absolute inset-0;
   }
 
-  .hover-lift {
-    @apply transition-[var(--transition-smooth)] hover:transform hover:-translate-y-1 hover:shadow-[var(--shadow-elegant)];
+  .premium-overlay {
+    background: linear-gradient(135deg, 
+      hsl(var(--primary) / 0.1) 0%, 
+      hsl(var(--secondary) / 0.1) 100%);
+    @apply absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300;
   }
 
-  /* Custom animations */
+  /* Interactive Elements */
+  .hover-lift {
+    @apply transition-[var(--transition-spring)] hover:transform hover:-translate-y-2 
+           hover:shadow-[var(--shadow-hover)] active:scale-[0.98];
+  }
+
+  .hover-glow {
+    @apply relative overflow-hidden before:absolute before:inset-0 
+           before:bg-gradient-to-r before:from-primary/0 before:via-primary/10 
+           before:to-primary/0 before:translate-x-[-100%] hover:before:translate-x-[100%] 
+           before:transition-transform before:duration-700;
+  }
+
+  /* Search Components */
+  .search-container {
+    @apply relative bg-background border-2 border-border rounded-xl 
+           focus-within:border-primary/50 focus-within:shadow-lg 
+           focus-within:shadow-primary/10 transition-all duration-300;
+  }
+
+  .search-results {
+    @apply absolute top-full left-0 right-0 mt-2 bg-card border border-border/50 
+           rounded-xl shadow-xl backdrop-blur-sm z-50 max-h-96 overflow-y-auto;
+  }
+
+  /* Dark Mode Toggle */
+  .theme-toggle {
+    @apply relative p-2 rounded-xl bg-muted hover:bg-accent transition-colors 
+           duration-300 hover:scale-110 active:scale-95;
+  }
+
+  /* Custom Animations */
   @keyframes marquee {
     0% { transform: translateX(100%); }
     100% { transform: translateX(-100%); }
+  }
+
+  @keyframes fadeInUp {
+    0% { 
+      opacity: 0; 
+      transform: translateY(20px); 
+    }
+    100% { 
+      opacity: 1; 
+      transform: translateY(0); 
+    }
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 hsl(var(--primary) / 0.4); }
+    50% { box-shadow: 0 0 0 10px hsl(var(--primary) / 0); }
   }
 
   .animate-marquee {
     animation: marquee 30s linear infinite;
   }
 
-  /* Line clamp utilities */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .animate-shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .animate-shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    animation: shimmer 2s infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s infinite;
+  }
+
+  /* Text Utilities */
   .line-clamp-2 {
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -183,4 +316,16 @@ All colors MUST be HSL for consistent theming.
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
+
+  .text-gradient {
+    background: var(--gradient-premium);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Spacing System Components */
+  .section-padding { @apply py-16 md:py-24; }
+  .container-padding { @apply px-4 md:px-6 lg:px-8; }
+  .content-spacing { @apply space-y-6 md:space-y-8; }
 }
