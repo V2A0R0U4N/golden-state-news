@@ -179,7 +179,7 @@ All colors MUST be HSL for consistent theming across light/dark modes.
   .news-card {
     @apply relative overflow-hidden rounded-xl bg-card shadow-[var(--shadow-card)] 
            transition-[var(--transition-smooth)] hover:shadow-[var(--shadow-hover)] 
-           hover:scale-[1.02] hover:-translate-y-1 group cursor-pointer;
+           hover:scale-[1.02] hover:-translate-y-1 cursor-pointer;
   }
 
   .news-card-premium {
