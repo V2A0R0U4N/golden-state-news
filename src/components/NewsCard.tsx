@@ -33,7 +33,7 @@ const NewsCard = ({
             <img 
               src={image} 
               alt={title}
-              className="w-24 h-24 md:w-32 md:h-32 object-cover rounded-lg"
+              className="w-32 h-32 md:w-40 md:h-40 object-cover rounded-lg"
             />
           </div>
           <div className="flex-1 min-w-0">
@@ -71,7 +71,7 @@ const NewsCard = ({
           <img 
             src={image} 
             alt={title}
-            className="w-full h-40 object-cover"
+            className="w-full h-48 md:h-56 object-cover"
           />
           <div className="card-overlay" />
           <div className="absolute inset-0 p-4 flex flex-col justify-end">
@@ -106,7 +106,7 @@ const NewsCard = ({
           <img 
             src={image} 
             alt={title}
-            className="w-full h-64 md:h-80 object-cover"
+            className="w-full h-72 md:h-96 object-cover"
           />
           <div className="card-overlay" />
           <div className="absolute inset-0 p-6 flex flex-col justify-end">
@@ -144,7 +144,7 @@ const NewsCard = ({
         <img 
           src={image} 
           alt={title}
-          className="w-full h-48 object-cover"
+          className="w-full h-56 md:h-64 object-cover"
         />
         <span className={`category-badge bg-${categoryColor} text-white absolute top-4 left-4`}>
           {category}

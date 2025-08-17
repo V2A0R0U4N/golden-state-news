@@ -69,13 +69,11 @@ const EnhancedHeader = () => {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-3 hover-lift">
-              <div className="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-xl flex items-center justify-center shadow-lg">
-                <span className="text-white font-bold text-lg ui-text">GF</span>
-              </div>
-              <div>
-                <h1 className="text-xl font-bold text-primary">Gujarat Focus</h1>
-                <p className="text-xs text-muted-foreground -mt-1 ui-text">News</p>
-              </div>
+              <img 
+                src="/lovable-uploads/2a10624f-f8b7-4362-8bec-087f48ee4f32.png" 
+                alt="Gujarat Focus News"
+                className="h-10 w-auto"
+              />
             </Link>
 
             {/* Desktop Navigation */}
