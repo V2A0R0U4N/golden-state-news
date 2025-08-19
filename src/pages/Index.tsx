@@ -7,7 +7,6 @@ import YouMayHaveMissed from '@/components/YouMayHaveMissed';
 import { Button } from '@/components/ui/button';
 import { TrendingUp, Calendar, Users, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
 const Index = () => {
   // Main breaking news data
   const heroStory = {
@@ -22,115 +21,101 @@ const Index = () => {
   };
 
   // Top news stories
-  const topStories = [
-    {
-      id: 2,
-      title: "સુરતમાં ડાયમંડ ઇન્ડસ્ટ્રીમાં નવી ટેકનોલોજીનો ઉપયોગ",
-      excerpt: "આર્ટિફિશિયલ ઇન્ટેલિજન્સ અને મશીન લર્નિંગ દ્વારા ડાયમંડ કટિંગમાં ક્રાંતિકારી બદલાવ.",
-      image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=600&fit=crop",
-      category: "Business",
-      categoryColor: "amber-600",
-      author: "Mehta Sahib",
-      time: "2 hours ago"
-    },
-    {
-      id: 3,
-      title: "અમદાવાદમાં મેટ્રો રેલ પ્રોજેક્ટના બીજા તબક્કાની શરૂઆત",
-      excerpt: "શહેરી પરિવહન વ્યવસ્થામાં સુધારો લાવવા માટે મેટ્રોની નવી લાઇન શરૂ કરવાની તૈયારી.",
-      image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&h=600&fit=crop",
-      category: "Development",
-      categoryColor: "blue-600",
-      author: "Priya Shah",
-      time: "3 hours ago"
-    },
-    {
-      id: 4,
-      title: "ગુજરાતી ક્રિકેટ ટીમે રણજી ટ્રોફીમાં લગાવી જીતની હેટ્રિક",
-      excerpt: "મજબૂત પ્રદર્શન સાથે ગુજરાતી ક્રિકેટ ટીમે સતત ત્રીજી જીત મેળવીને ટોપ પર પહોંચવાનું લક્ષ્ય.",
-      image: "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800&h=600&fit=crop",
-      category: "Sports",
-      categoryColor: "green-600",
-      author: "Kiran Modi",
-      time: "4 hours ago"
-    },
-    {
-      id: 5,
-      title: "રાજકોટમાં નવી ટેક્નોલોજી પાર્કનું ઉદ્ઘાટન",
-      excerpt: "IT કંપનીઓ માટે વિશ્વમાનના ઇન્ફ્રાસ્ટ્રક્ચર સાથે આધુનિક ટેકનોલોજી પાર્કનો પ્રારંભ.",
-      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=600&fit=crop",
-      category: "Technology",
-      categoryColor: "blue-500",
-      author: "Amit Joshi",
-      time: "5 hours ago"
-    }
-  ];
+  const topStories = [{
+    id: 2,
+    title: "સુરતમાં ડાયમંડ ઇન્ડસ્ટ્રીમાં નવી ટેકનોલોજીનો ઉપયોગ",
+    excerpt: "આર્ટિફિશિયલ ઇન્ટેલિજન્સ અને મશીન લર્નિંગ દ્વારા ડાયમંડ કટિંગમાં ક્રાંતિકારી બદલાવ.",
+    image: "https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=600&fit=crop",
+    category: "Business",
+    categoryColor: "amber-600",
+    author: "Mehta Sahib",
+    time: "2 hours ago"
+  }, {
+    id: 3,
+    title: "અમદાવાદમાં મેટ્રો રેલ પ્રોજેક્ટના બીજા તબક્કાની શરૂઆત",
+    excerpt: "શહેરી પરિવહન વ્યવસ્થામાં સુધારો લાવવા માટે મેટ્રોની નવી લાઇન શરૂ કરવાની તૈયારી.",
+    image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&h=600&fit=crop",
+    category: "Development",
+    categoryColor: "blue-600",
+    author: "Priya Shah",
+    time: "3 hours ago"
+  }, {
+    id: 4,
+    title: "ગુજરાતી ક્રિકેટ ટીમે રણજી ટ્રોફીમાં લગાવી જીતની હેટ્રિક",
+    excerpt: "મજબૂત પ્રદર્શન સાથે ગુજરાતી ક્રિકેટ ટીમે સતત ત્રીજી જીત મેળવીને ટોપ પર પહોંચવાનું લક્ષ્ય.",
+    image: "https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?w=800&h=600&fit=crop",
+    category: "Sports",
+    categoryColor: "green-600",
+    author: "Kiran Modi",
+    time: "4 hours ago"
+  }, {
+    id: 5,
+    title: "રાજકોટમાં નવી ટેક્નોલોજી પાર્કનું ઉદ્ઘાટન",
+    excerpt: "IT કંપનીઓ માટે વિશ્વમાનના ઇન્ફ્રાસ્ટ્રક્ચર સાથે આધુનિક ટેકનોલોજી પાર્કનો પ્રારંભ.",
+    image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=600&fit=crop",
+    category: "Technology",
+    categoryColor: "blue-500",
+    author: "Amit Joshi",
+    time: "5 hours ago"
+  }];
 
   // Latest news grid
-  const latestNews = [
-    {
-      id: 6,
-      title: "વડોદરામાં ઐતિહાસિક બારોડા મ્યુઝિયમનું નવીનીકરણ",
-      excerpt: "પુરાતત્ત્વ વિભાગ દ્વારા મ્યુઝિયમમાં આધુનિક સુવિધાઓ અને ડિજિટલ ડિસ્પ્લેનો ઉમેરો.",
-      image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop",
-      category: "Culture",
-      categoryColor: "purple-600",
-      author: "Nisha Prajapati",
-      time: "6 hours ago"
-    },
-    {
-      id: 7,
-      title: "ગુજરાતમાં સોલાર એનર્જી પ્રોજેક્ટનું વિસ્તરણ",
-      excerpt: "પર્યાવરણ રક્ષણ અને ઉર્જા સુરક્ષા માટે નવેનવા સોલાર પાર્કનું નિર્માણ કાર્ય.",
-      image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&h=400&fit=crop",
-      category: "Environment",
-      categoryColor: "emerald-600",
-      author: "Dr. Hitesh Pandya",
-      time: "8 hours ago"
-    },
-    {
-      id: 8,
-      title: "ગાંધીનગરમાં આંતરરાષ્ટ્રીય કન્વેન્શન સેન્ટરનો વિકાસ",
-      excerpt: "વિશ્વ સ્તરના કાર્યક્રમો આયોજિત કરવા માટે આધુનિક સુવિધાઓ સાથે કન્વેન્શન સેન્ટર.",
-      image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
-      category: "Infrastructure",
-      categoryColor: "slate-600",
-      author: "Rakesh Vaghela",
-      time: "10 hours ago"
-    },
-    {
-      id: 9,
-      title: "ભાવનગરમાં નવું મેરીન એન્જિનિયરિંગ કોલેજ",
-      excerpt: "દરિયાઇ વેપાર અને શિપિંગ ઇન્ડસ્ટ્રી માટે વિશેષજ્ઞ એન્જિનિયરો તૈયાર કરવાનો હેતુ.",
-      image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&h=400&fit=crop",
-      category: "Education",
-      categoryColor: "indigo-600",
-      author: "Prof. Geeta Trivedi",
-      time: "12 hours ago"
-    },
-    {
-      id: 10,
-      title: "જામનગરમાં રિન્યુએબલ એનર્જી રિસર્ચ સેન્ટર",
-      excerpt: "સ્વચ્છ ઉર્જા ક્ષેત્રે સંશોધન અને વિકાસ માટે અત્યાધુનિક સંશોધન કેન્દ્રની સ્થાપના.",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop",
-      category: "Research",
-      categoryColor: "cyan-600",
-      author: "Dr. Vikram Soni",
-      time: "14 hours ago"
-    },
-    {
-      id: 11,
-      title: "નડિયાદમાં ઓર્ગેનિક ફાર્મિંગ પ્રમોશન કેન્ટર",
-      excerpt: "જૈવિક ખેતી અને ટકાઉ કૃષિ વિકાસ માટે કિસાનોને તાલીમ અને સહાયતા કેન્દ્ર.",
-      image: "https://images.unsplash.com/photo-1464822759844-d150ad6d1dff?w=600&h=400&fit=crop",
-      category: "Agriculture",
-      categoryColor: "lime-600",
-      author: "Jagdish Chaudhary",
-      time: "16 hours ago"
-    }
-  ];
-
-  return (
-    <div className="min-h-screen bg-background">
+  const latestNews = [{
+    id: 6,
+    title: "વડોદરામાં ઐતિહાસિક બારોડા મ્યુઝિયમનું નવીનીકરણ",
+    excerpt: "પુરાતત્ત્વ વિભાગ દ્વારા મ્યુઝિયમમાં આધુનિક સુવિધાઓ અને ડિજિટલ ડિસ્પ્લેનો ઉમેરો.",
+    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop",
+    category: "Culture",
+    categoryColor: "purple-600",
+    author: "Nisha Prajapati",
+    time: "6 hours ago"
+  }, {
+    id: 7,
+    title: "ગુજરાતમાં સોલાર એનર્જી પ્રોજેક્ટનું વિસ્તરણ",
+    excerpt: "પર્યાવરણ રક્ષણ અને ઉર્જા સુરક્ષા માટે નવેનવા સોલાર પાર્કનું નિર્માણ કાર્ય.",
+    image: "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&h=400&fit=crop",
+    category: "Environment",
+    categoryColor: "emerald-600",
+    author: "Dr. Hitesh Pandya",
+    time: "8 hours ago"
+  }, {
+    id: 8,
+    title: "ગાંધીનગરમાં આંતરરાષ્ટ્રીય કન્વેન્શન સેન્ટરનો વિકાસ",
+    excerpt: "વિશ્વ સ્તરના કાર્યક્રમો આયોજિત કરવા માટે આધુનિક સુવિધાઓ સાથે કન્વેન્શન સેન્ટર.",
+    image: "https://images.unsplash.com/photo-1497366216548-37526070297c?w=600&h=400&fit=crop",
+    category: "Infrastructure",
+    categoryColor: "slate-600",
+    author: "Rakesh Vaghela",
+    time: "10 hours ago"
+  }, {
+    id: 9,
+    title: "ભાવનગરમાં નવું મેરીન એન્જિનિયરિંગ કોલેજ",
+    excerpt: "દરિયાઇ વેપાર અને શિપિંગ ઇન્ડસ્ટ્રી માટે વિશેષજ્ઞ એન્જિનિયરો તૈયાર કરવાનો હેતુ.",
+    image: "https://images.unsplash.com/photo-1580582932707-520aed937b7b?w=600&h=400&fit=crop",
+    category: "Education",
+    categoryColor: "indigo-600",
+    author: "Prof. Geeta Trivedi",
+    time: "12 hours ago"
+  }, {
+    id: 10,
+    title: "જામનગરમાં રિન્યુએબલ એનર્જી રિસર્ચ સેન્ટર",
+    excerpt: "સ્વચ્છ ઉર્જા ક્ષેત્રે સંશોધન અને વિકાસ માટે અત્યાધુનિક સંશોધન કેન્દ્રની સ્થાપના.",
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&h=400&fit=crop",
+    category: "Research",
+    categoryColor: "cyan-600",
+    author: "Dr. Vikram Soni",
+    time: "14 hours ago"
+  }, {
+    id: 11,
+    title: "નડિયાદમાં ઓર્ગેનિક ફાર્મિંગ પ્રમોશન કેન્ટર",
+    excerpt: "જૈવિક ખેતી અને ટકાઉ કૃષિ વિકાસ માટે કિસાનોને તાલીમ અને સહાયતા કેન્દ્ર.",
+    image: "https://images.unsplash.com/photo-1464822759844-d150ad6d1dff?w=600&h=400&fit=crop",
+    category: "Agriculture",
+    categoryColor: "lime-600",
+    author: "Jagdish Chaudhary",
+    time: "16 hours ago"
+  }];
+  return <div className="min-h-screen bg-background">
       <EnhancedHeader />
       <NewsBanner />
 
@@ -161,9 +146,7 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-            {topStories.map((story) => (
-              <NewsCard key={story.id} {...story} variant="horizontal" className="h-full" />
-            ))}
+            {topStories.map(story => <NewsCard key={story.id} {...story} variant="horizontal" className="h-full" />)}
           </div>
         </div>
       </section>
@@ -181,9 +164,7 @@ const Index = () => {
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {latestNews.map((story) => (
-              <NewsCard key={story.id} {...story} />
-            ))}
+            {latestNews.map(story => <NewsCard key={story.id} {...story} />)}
           </div>
         </div>
       </section>
@@ -236,28 +217,9 @@ const Index = () => {
       <YouMayHaveMissed />
 
       {/* Newsletter CTA Section */}
-      <section className="py-16 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Stay Updated with Gujarat Focus News
-          </h2>
-          <p className="text-lg md:text-xl text-primary-foreground/90 mb-8 max-w-2xl mx-auto">
-            Get the latest news, event updates, and special coverage delivered straight to your phone every morning
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="secondary" size="lg" className="bg-secondary hover:bg-secondary-hover">
-              Download Mobile App
-            </Button>
-            <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary">
-              Join WhatsApp Updates
-            </Button>
-          </div>
-        </div>
-      </section>
+      
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
