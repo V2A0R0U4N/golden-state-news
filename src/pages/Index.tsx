@@ -1,4 +1,5 @@
 import EnhancedHeader from '@/components/EnhancedHeader';
+import NewsBanner from '@/components/NewsBanner';
 import Footer from '@/components/Footer';
 import NewsCard from '@/components/NewsCard';
 import EventsSection from '@/components/EventsSection';
@@ -131,6 +132,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <EnhancedHeader />
+      <NewsBanner />
 
       {/* Hero Breaking News Section */}
       <section className="py-8 bg-gradient-to-r from-red-50 via-white to-red-50 dark:from-red-950/20 dark:via-background dark:to-red-950/20">
