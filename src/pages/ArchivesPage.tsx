@@ -2,7 +2,9 @@ import { useState } from 'react';
 import { Calendar, Filter, ArrowLeft, ArrowRight, Clock, TrendingUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import NewsCard from '@/components/NewsCard';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import EnhancedHeader from '@/components/EnhancedHeader';
+import Footer from '@/components/Footer';
 import politicsNews from '@/assets/politics-news.jpg';
 import businessNews from '@/assets/business-news.jpg';
 import sportsNews from '@/assets/sports-news.jpg';
@@ -10,10 +12,13 @@ import culturalEvent from '@/assets/cultural-event.jpg';
 import heroNewsroom from '@/assets/hero-newsroom.jpg';
 
 const ArchivesPage = () => {
+  const navigate = useNavigate();
   const [selectedYear, setSelectedYear] = useState(2024);
   const [selectedMonth, setSelectedMonth] = useState(8); // August
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [viewMode, setViewMode] = useState<'calendar' | 'list'>('calendar');
+  const [currentPage, setCurrentPage] = useState(1);
+  const articlesPerPage = 5;
 
   const months = [
     'January', 'February', 'March', 'April', 'May', 'June',
@@ -97,8 +102,47 @@ const ArchivesPage = () => {
     { month: 'May 2024', articles: 163, views: '2.5M', trending: 'Business' }
   ];
 
+  // Filter articles based on category
+  const filteredArticles = selectedCategory === 'all' 
+    ? archiveArticles 
+    : archiveArticles.filter(article => 
+        article.category.toLowerCase() === selectedCategory
+      );
+
+  // Pagination calculations
+  const totalPages = Math.ceil(filteredArticles.length / articlesPerPage);
+  const startIndex = (currentPage - 1) * articlesPerPage;
+  const currentArticles = filteredArticles.slice(startIndex, startIndex + articlesPerPage);
+
+  const handleCategoryClick = (categoryValue: string) => {
+    if (categoryValue !== 'all') {
+      navigate(`/category/${categoryValue}`);
+    }
+  };
+
+  const handlePreviousMonth = () => {
+    if (selectedMonth === 1) {
+      setSelectedMonth(12);
+      setSelectedYear(selectedYear - 1);
+    } else {
+      setSelectedMonth(selectedMonth - 1);
+    }
+    setCurrentPage(1);
+  };
+
+  const handleNextMonth = () => {
+    if (selectedMonth === 12) {
+      setSelectedMonth(1);
+      setSelectedYear(selectedYear + 1);
+    } else {
+      setSelectedMonth(selectedMonth + 1);
+    }
+    setCurrentPage(1);
+  };
+
   return (
     <div className="min-h-screen bg-background">
+      <EnhancedHeader />
       <div className="container mx-auto container-padding section-padding">
         {/* Header */}
         <div className="text-center mb-12 animate-fade-in-up">
@@ -182,10 +226,10 @@ const ArchivesPage = () => {
                 {months[selectedMonth - 1]} {selectedYear}
               </h2>
               <div className="flex items-center gap-2">
-                <Button variant="ghost" size="sm">
+                <Button variant="ghost" size="sm" onClick={handlePreviousMonth}>
                   <ArrowLeft className="h-4 w-4" />
                 </Button>
-                <Button variant="ghost" size="sm">
+                <Button variant="ghost" size="sm" onClick={handleNextMonth}>
                   <ArrowRight className="h-4 w-4" />
                 </Button>
               </div>
@@ -193,41 +237,75 @@ const ArchivesPage = () => {
 
             {/* Archive Articles */}
             <div className="space-y-6">
-              {archiveArticles.map((article, index) => (
-                <div 
-                  key={article.id}
-                  className="animate-fade-in-up"
-                  style={{ animationDelay: `${index * 100}ms` }}
-                >
-                  <NewsCard
-                    title={article.title}
-                    excerpt={article.excerpt}
-                    image={article.image}
-                    category={article.category}
-                    categoryColor={article.categoryColor}
-                    author={article.author}
-                    time={article.time}
-                    variant="horizontal"
-                    className="hover-lift"
-                  />
-                  <div className="mt-2 flex items-center gap-4 text-sm text-muted-foreground ui-text">
-                    <span className="flex items-center gap-1">
-                      <TrendingUp className="h-3 w-3" />
-                      {article.views.toLocaleString()} views
-                    </span>
+              {currentArticles.length > 0 ? (
+                currentArticles.map((article, index) => (
+                  <div 
+                    key={article.id}
+                    className="animate-fade-in-up"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <NewsCard
+                      title={article.title}
+                      excerpt={article.excerpt}
+                      image={article.image}
+                      category={article.category}
+                      categoryColor={article.categoryColor}
+                      author={article.author}
+                      time={article.time}
+                      variant="horizontal"
+                      className="hover-lift"
+                    />
+                    <div className="mt-2 flex items-center gap-4 text-sm text-muted-foreground ui-text">
+                      <span className="flex items-center gap-1">
+                        <TrendingUp className="h-3 w-3" />
+                        {article.views.toLocaleString()} views
+                      </span>
+                    </div>
                   </div>
+                ))
+              ) : (
+                <div className="text-center py-12">
+                  <Clock className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+                  <h3 className="text-lg font-semibold text-foreground mb-2">No Articles Found</h3>
+                  <p className="text-muted-foreground ui-text">
+                    No articles found for the selected month and category.
+                  </p>
                 </div>
-              ))}
+              )}
             </div>
 
             {/* Pagination */}
-            <div className="flex items-center justify-center gap-2 mt-12">
-              <Button variant="outline" size="sm">Previous</Button>
-              <Button variant="outline" size="sm" className="bg-primary text-primary-foreground">1</Button>
-              <Button variant="outline" size="sm">2</Button>
-              <Button variant="outline" size="sm">3</Button>
-              <Button variant="outline" size="sm">Next</Button>
-            </div>
+            {totalPages > 1 && (
+              <div className="flex items-center justify-center gap-2 mt-12">
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+                  disabled={currentPage === 1}
+                >
+                  Previous
+                </Button>
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                  <Button
+                    key={page}
+                    variant="outline"
+                    size="sm"
+                    onClick={() => setCurrentPage(page)}
+                    className={currentPage === page ? "bg-primary text-primary-foreground" : ""}
+                  >
+                    {page}
+                  </Button>
+                ))}
+                <Button 
+                  variant="outline" 
+                  size="sm" 
+                  onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+                  disabled={currentPage === totalPages}
+                >
+                  Next
+                </Button>
+              </div>
+            )}
           </div>
 
           {/* Sidebar */}
@@ -255,14 +333,18 @@ const ArchivesPage = () => {
               <h3 className="text-lg font-semibold text-foreground mb-4">Categories</h3>
               <div className="space-y-3">
                 {categories.slice(1).map((category) => (
-                  <div key={category.value} className="flex items-center justify-between">
-                    <span className="text-sm text-muted-foreground ui-text">
+                  <button
+                    key={category.value}
+                    onClick={() => handleCategoryClick(category.value)}
+                    className="w-full flex items-center justify-between hover:bg-accent rounded-lg p-2 transition-colors"
+                  >
+                    <span className="text-sm text-muted-foreground ui-text hover:text-primary">
                       {category.label}
                     </span>
                     <span className="text-sm font-medium text-foreground ui-text">
                       {category.count}
                     </span>
-                  </div>
+                  </button>
                 ))}
               </div>
             </div>
@@ -300,6 +382,7 @@ const ArchivesPage = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
