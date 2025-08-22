@@ -1,18 +1,21 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Search, Menu, X, Sun, Moon, Laptop } from 'lucide-react';
+import { Search, Menu, X, Sun, Moon, Laptop, Phone, Mail, MapPin, Send } from 'lucide-react';
 import { useTheme } from '@/contexts/theme-provider';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const EnhancedHeader = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isContactOpen, setIsContactOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
+  const [contactForm, setContactForm] = useState({ name: '', email: '', message: '' });
   const { theme, setTheme } = useTheme();
+  const location = useLocation();
 
   const navigation = [
-    { name: 'Home', href: '/', active: true },
+    { name: 'Home', href: '/' },
     { name: 'Breaking News', href: '/breaking' },
     { name: 'Politics', href: '/category/politics' },
     { name: 'Business', href: '/category/business' },
@@ -21,6 +24,7 @@ const EnhancedHeader = () => {
     { name: 'Technology', href: '/category/technology' },
     { name: 'Events', href: '/events' },
     { name: 'Archives', href: '/archives' },
+    { name: 'Contact', href: '#', action: 'contact' },
   ];
 
   const handleSearchSubmit = (e: React.FormEvent) => {
@@ -29,6 +33,14 @@ const EnhancedHeader = () => {
       // Navigate to search results page
       window.location.href = `/search?q=${encodeURIComponent(searchQuery)}`;
     }
+  };
+
+  const handleContactSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Note: Email functionality requires backend - user needs to connect to Supabase
+    alert('Contact form submitted! (Note: Email functionality requires backend connection)');
+    setContactForm({ name: '', email: '', message: '' });
+    setIsContactOpen(false);
   };
 
   const cycleTheme = () => {
@@ -72,25 +84,42 @@ const EnhancedHeader = () => {
               <img 
                 src="/lovable-uploads/2a10624f-f8b7-4362-8bec-087f48ee4f32.png" 
                 alt="Gujarat Focus News"
-                className="h-10 w-auto"
+                className="h-14 w-auto"
               />
             </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-8">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={`text-sm font-medium transition-colors hover:text-primary hover-glow ui-text ${
-                    item.active
-                      ? 'text-primary border-b-2 border-primary pb-1'
-                      : 'text-foreground'
-                  }`}
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {navigation.map((item) => {
+                const isActive = location.pathname === item.href || 
+                  (item.href.includes('/category/') && location.pathname === item.href);
+                
+                if (item.action === 'contact') {
+                  return (
+                    <button
+                      key={item.name}
+                      onClick={() => setIsContactOpen(true)}
+                      className="text-sm font-medium transition-colors hover:text-primary hover-glow ui-text text-foreground"
+                    >
+                      {item.name}
+                    </button>
+                  );
+                }
+                
+                return (
+                  <Link
+                    key={item.name}
+                    to={item.href}
+                    className={`text-sm font-medium transition-colors hover:text-primary hover-glow ui-text ${
+                      isActive
+                        ? 'text-primary border-b-2 border-primary pb-1'
+                        : 'text-foreground'
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                );
+              })}
             </nav>
 
             {/* Desktop Actions */}
@@ -143,14 +172,6 @@ const EnhancedHeader = () => {
                 {getThemeIcon()}
               </Button>
 
-              {/* Subscribe Button */}
-              <Button 
-                variant="default" 
-                size="sm" 
-                className="bg-primary hover:bg-primary-hover hover-lift ui-text"
-              >
-                Subscribe
-              </Button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -200,32 +221,101 @@ const EnhancedHeader = () => {
           {isMobileMenuOpen && (
             <div className="md:hidden bg-background/95 backdrop-blur-sm border-t border-border animate-fade-in-up">
               <nav className="container-padding py-4 space-y-3">
-                {navigation.map((item) => (
-                  <Link
-                    key={item.name}
-                    to={item.href}
-                    className={`block text-sm font-medium transition-colors hover:text-primary ui-text ${
-                      item.active ? 'text-primary' : 'text-foreground'
-                    }`}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
-                <div className="pt-4 border-t border-border">
-                  <Button 
-                    variant="default" 
-                    size="sm" 
-                    className="w-full bg-primary hover:bg-primary-hover ui-text"
-                  >
-                    Subscribe
-                  </Button>
-                </div>
+                {navigation.map((item) => {
+                  const isActive = location.pathname === item.href || 
+                    (item.href.includes('/category/') && location.pathname === item.href);
+                  
+                  if (item.action === 'contact') {
+                    return (
+                      <button
+                        key={item.name}
+                        onClick={() => {
+                          setIsContactOpen(true);
+                          setIsMobileMenuOpen(false);
+                        }}
+                        className="block text-sm font-medium transition-colors hover:text-primary ui-text text-foreground"
+                      >
+                        {item.name}
+                      </button>
+                    );
+                  }
+                  
+                  return (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      className={`block text-sm font-medium transition-colors hover:text-primary ui-text ${
+                        isActive ? 'text-primary' : 'text-foreground'
+                      }`}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  );
+                })}
               </nav>
             </div>
           )}
         </div>
       </header>
+
+      {/* Contact Modal */}
+      {isContactOpen && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+          <div className="bg-background rounded-lg shadow-lg max-w-md w-full p-6">
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-lg font-semibold">Contact Us</h3>
+              <Button variant="ghost" size="sm" onClick={() => setIsContactOpen(false)}>
+                <X className="h-4 w-4" />
+              </Button>
+            </div>
+            
+            {/* Contact Info */}
+            <div className="space-y-3 mb-6">
+              <div className="flex items-center gap-3">
+                <Phone className="h-4 w-4 text-primary" />
+                <span className="text-sm">+91 79 2658 1234</span>
+              </div>
+              <div className="flex items-center gap-3">
+                <Mail className="h-4 w-4 text-primary" />
+                <span className="text-sm">info@gujaratfocus.com</span>
+              </div>
+              <div className="flex items-start gap-3">
+                <MapPin className="h-4 w-4 text-primary mt-0.5" />
+                <span className="text-sm">123, Press Complex, Ashram Road, Ahmedabad</span>
+              </div>
+            </div>
+
+            {/* Contact Form */}
+            <form onSubmit={handleContactSubmit} className="space-y-4">
+              <Input
+                placeholder="Your Name"
+                value={contactForm.name}
+                onChange={(e) => setContactForm({...contactForm, name: e.target.value})}
+                required
+              />
+              <Input
+                type="email"
+                placeholder="Your Email"
+                value={contactForm.email}
+                onChange={(e) => setContactForm({...contactForm, email: e.target.value})}
+                required
+              />
+              <textarea
+                placeholder="Your Message"
+                className="w-full p-3 border border-border rounded-md resize-none h-24"
+                value={contactForm.message}
+                onChange={(e) => setContactForm({...contactForm, message: e.target.value})}
+                required
+              />
+              <Button type="submit" className="w-full">
+                <Send className="h-4 w-4 mr-2" />
+                Send Message
+              </Button>
+            </form>
+          </div>
+        </div>
+      )}
     </>
   );
 };

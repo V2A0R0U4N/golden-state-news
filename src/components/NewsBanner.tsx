@@ -1,15 +1,25 @@
 import { Facebook, Instagram, Twitter, Youtube } from 'lucide-react';
+import newsBannerImage from '@/assets/news-banner.jpg';
 
 const NewsBanner = () => {
+  // Easily changeable social media links
+  const socialLinks = {
+    facebook: "https://facebook.com/gujaratfocusnews",
+    instagram: "https://instagram.com/gujaratfocusnews", 
+    twitter: "https://twitter.com/gujaratfocusnews",
+    youtube: "https://youtube.com/@gujaratfocusnews"
+  };
+
   return (
     <section className="relative bg-gradient-to-r from-red-700 via-red-600 to-red-700 text-white overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          backgroundSize: '60px 60px'
-        }}></div>
+      {/* Background Image */}
+      <div className="absolute inset-0">
+        <img 
+          src={newsBannerImage} 
+          alt="Gujarat Focus News Banner"
+          className="w-full h-full object-cover opacity-30"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-red-700/80 via-red-600/80 to-red-700/80"></div>
       </div>
       
       <div className="container mx-auto px-4 py-6 relative z-10">
@@ -56,16 +66,16 @@ const NewsBanner = () => {
               GUJARAT FOCUS NEWS CHANNEL
             </h2>
             <div className="flex items-center justify-center lg:justify-end gap-3 mb-3">
-              <a href="#" className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors">
+              <a href={socialLinks.facebook} target="_blank" rel="noopener noreferrer" className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors">
                 <Facebook className="h-5 w-5" />
               </a>
-              <a href="#" className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors">
+              <a href={socialLinks.instagram} target="_blank" rel="noopener noreferrer" className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors">
                 <Instagram className="h-5 w-5" />
               </a>
-              <a href="#" className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors">
+              <a href={socialLinks.twitter} target="_blank" rel="noopener noreferrer" className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors">
                 <Twitter className="h-5 w-5" />
               </a>
-              <a href="#" className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors">
+              <a href={socialLinks.youtube} target="_blank" rel="noopener noreferrer" className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-colors">
                 <Youtube className="h-5 w-5" />
               </a>
             </div>

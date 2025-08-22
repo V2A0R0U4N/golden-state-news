@@ -42,30 +42,6 @@ const Footer = () => {
 
   return (
     <footer className="bg-card border-t border-border">
-      {/* Newsletter Section */}
-      <div className="bg-primary text-primary-foreground py-12">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h3 className="text-2xl font-bold mb-4">
-              દરરોજ સવારે તાજા સમાચાર મેળવો
-            </h3>
-            <p className="text-primary-foreground/90 mb-8 text-lg">
-              ગુજરાતના તાજેતરના સમાચાર અને અપડેટ્સ સીધા તમારા ઇનબોક્સમાં
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <Input 
-                type="email"
-                placeholder="તમારું ઇમેઇલ એડ્રેસ"
-                className="flex-1 bg-white text-black"
-              />
-              <Button variant="secondary" className="bg-secondary hover:bg-secondary-hover">
-                <Send className="h-4 w-4 mr-2" />
-                Subscribe
-              </Button>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Main Footer Content */}
       <div className="py-16">
@@ -86,18 +62,18 @@ const Footer = () => {
                 ગુજરાતના તાજેતરના સમાચાર, રાજકારણ, બિઝનેસ, સ્પોર્ટ્સ અને સંસ્કૃતિની વિશ્વસનીય માહિતી.
               </p>
               <div className="flex space-x-4">
-                <Button variant="outline" size="icon" className="hover:bg-primary hover:text-primary-foreground">
+                <a href="#" className="inline-flex items-center justify-center w-10 h-10 border border-border rounded-md hover:bg-primary hover:text-primary-foreground transition-colors">
                   <Facebook className="h-4 w-4" />
-                </Button>
-                <Button variant="outline" size="icon" className="hover:bg-primary hover:text-primary-foreground">
+                </a>
+                <a href="#" className="inline-flex items-center justify-center w-10 h-10 border border-border rounded-md hover:bg-primary hover:text-primary-foreground transition-colors">
                   <Twitter className="h-4 w-4" />
-                </Button>
-                <Button variant="outline" size="icon" className="hover:bg-primary hover:text-primary-foreground">
+                </a>
+                <a href="#" className="inline-flex items-center justify-center w-10 h-10 border border-border rounded-md hover:bg-primary hover:text-primary-foreground transition-colors">
                   <Instagram className="h-4 w-4" />
-                </Button>
-                <Button variant="outline" size="icon" className="hover:bg-primary hover:text-primary-foreground">
+                </a>
+                <a href="#" className="inline-flex items-center justify-center w-10 h-10 border border-border rounded-md hover:bg-primary hover:text-primary-foreground transition-colors">
                   <Youtube className="h-4 w-4" />
-                </Button>
+                </a>
               </div>
             </div>
 
